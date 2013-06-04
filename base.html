@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title> 
+   <%block name="title" />
+</title>
+<link rel="stylesheet" href="css/main.css" type="text/css" media="screen" />
+  
+</head>
+
+<body>
+<div id="navigation">
+   <div id="nav_bar">
+      <ul>
+        <li class="page_item"><a href="index.html">Home</a></li>
+        <li class="page_item page-item-links"><a href="first.html" title="first">First</a></li>
+        <li class="page_item page-item-text"><a href="second.html" title="secord">Second</a></li>
+        <li class="page_item page-item-text"><a href="design.html" title="design">Design</a></li>
+      </ul>
+  </div> 
+  <br>
+   
+  <span class="baner_text"> 
+      Web assessment
+  </span>
+  
+  <span class="baner_text_sub">  
+      Presentation for assignment
+  </span>
+    
+    
+</div>  <!--navigation-->
+
+
+<div id="wrapper2">
+  <div id="wrapper">
+     <div id="content-wrapper">
+         <div id="content">
+           <%block name="content"/>
+   
+         </div> <!--content-->
+ 
+     </div> <!--content-wrapper-->
+    
+   
+    <div id="sidebar-wrapper">
+        <div id="sidebar">
+            <ul>
+               ## ${name}
+               <li>fdsdfdsf  </li>
+               
+            </ul>
+        
+        </div> <!--end of sidebar-->
+        
+    </div>  <!--end of sidebar-wrapper-->
+   
+  </div>  <!-- wrapper-->
+  <div id="footer">
+    <p> Powered by ${name} </p>
+
+   </div>
+  
+</div> <!-- wrapper2-->
+
+</body>
+</html>
