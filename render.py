@@ -3,11 +3,18 @@ from mako.runtime import Context
 from StringIO import StringIO
 from mako.lookup import TemplateLookup
 
-mylookup = TemplateLookup(directories=['.'])
+myLookup = TemplateLookup(directories=['.'])
 
-mytemplate = Template(filename="first.tpl", lookup=mylookup)
-buf = StringIO()
-ctx = Context(buf, name="jack")
-mytemplate.render_context(ctx)
-print buf.getvalue()
-open("out.html", 'w').write(buf.getvalue())
+
+def makePage(template, outfile, **context):
+    myTemplate = Template(filename=template, lookup=myLookup)
+    buf = StringIO()
+    ctx = Context(buf, **context)
+    myTemplate.render_context(ctx)
+    print buf.getvalue()
+    open(outfile, 'w').write(buf.getvalue())
+    
+
+if __name__ == "__main__":
+    makePage("template.tpl", "out.html",articleTitle="first page", name="Stephen", studentID="123456", articleContent=open("first_sol.txt").read())
+    
