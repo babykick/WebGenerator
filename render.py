@@ -20,8 +20,8 @@ def makePage(template, outfile, **context):
 
 if __name__ == "__main__":
     ctx = {
-            'baner_text': 'See world',
-            'baner_text_sub': 'Internet view',
+            'baner_text': 'Internet Today',
+            'baner_text_sub': 'A view about internet',
             'articleTitle': "Private v. Public in Social Networking",
             'name': "Jing Tao",
             'studentID': "123456",
