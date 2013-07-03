@@ -5,28 +5,23 @@
 <title> 
    <%block name="title" />
 </title>
-<link rel="stylesheet" href="css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="main.css" type="text/css" media="screen" />
   
 </head>
 
 <body>
 <div id="navigation">
    <div id="nav_bar">
-      <ul>
-        <li class="page_item"><a href="index.html">Home</a></li>
-        <li class="page_item page-item-links"><a href="first.html" title="first">First</a></li>
-        <li class="page_item page-item-text"><a href="second.html" title="secord">Second</a></li>
-        <li class="page_item page-item-text"><a href="design.html" title="design">Design</a></li>
-      </ul>
+     <%block name="navlist"/>
   </div> 
   <br>
    
   <span class="baner_text"> 
-      Web assessment
+      ${baner_text}
   </span>
   
   <span class="baner_text_sub">  
-      Presentation for assignment
+      ${baner_text_sub}
   </span>
     
     
@@ -46,12 +41,8 @@
    
     <div id="sidebar-wrapper">
         <div id="sidebar">
-            <img src="images/coffee.jpg" width=180 />
-            <ul>
-              <li> Student Name: ${name} </li>
-               <li>Student NO: ${studentID}</li>
-               
-            </ul>
+            <img src="${imgdir}/coffee.jpg" width=180 />
+           <%block name="sidebarinfo" />
         
         </div> <!--end of sidebar-->
         
