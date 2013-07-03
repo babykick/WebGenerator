@@ -1,7 +1,7 @@
 <%inherit file="base.html" />
 
 <%block name="title">
-    ${name}: ${courseInfo}
+    ${student.name}: ${student.course}
 </%block>
  
 <%block name="navlist">
@@ -15,10 +15,10 @@
  
 <%block name="content">
   <div class="post"> 
-      <h2><a href="#"> ${articleTitle}</a><br></h2>
+      <h2><a href="#"> ${post.title}</a><br></h2>
       <p> 
            ## <%include file=${includeFile}/>
-           ${articleContent}
+           ${post.content}
       </p>
                
   </div>  
@@ -28,7 +28,7 @@
 
 <%block name="sidebarinfo">
    <ul>
-     <li> Student Name: ${name} </li>
+     <li> Student Name: ${student.name} </li>
    </ul>
  
 </%block>
