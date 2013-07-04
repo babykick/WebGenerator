@@ -15,10 +15,11 @@ class Post(object):
         
 
 class Student(object):
-    def __init__(self, name, id, course):
+    def __init__(self, name, id, email, course):
         self.name=name
         self.id = id
         self.course = course
+        self.email = email
      
 
 def makePage(template, outfile, **context):
@@ -34,13 +35,13 @@ def makePage(template, outfile, **context):
 
 if __name__ == "__main__":
     articleContent = open("content.essay.txt").read()
-    post = Post(title="Private v. Public in Social Networking", content=articleContent)    
-    student = Student(name="Jing Tao", id="123456", course="Course info")
+    post = Post(title="Computers and Children", content=articleContent)    
+    student = Student(name="Jing Tao", id="123456", email="taojing0814@126.com", course="SC/NATS1700B-computer,information and society")
     ctx = {
             'student': student,
             'post': post,
-            'baner_text': 'Internet Today',
-            'baner_text_sub': 'A view about internet',
+            'baner_text': 'Computer Life',
+            'baner_text_sub': 'A view about computer',
     }
     
     env = {
