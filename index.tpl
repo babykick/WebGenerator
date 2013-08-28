@@ -23,8 +23,9 @@
            % endfor
            ${post.content}
       </p>
+
+  </div>
   % endfor
-  </div>  
  
 
 </%block>

@@ -95,10 +95,17 @@ if __name__ == "__main__":
     # Home page
     page = Page(title='Wild world', subtitle='Mammals of Tasmania', student=student)
     page.addCSS("main_alter.css")
-    articleContent = open("animals.txt").read()
-    post = Post(title="Animals", content=articleContent)
-    post.addImage("animals.jpg")
     page.addNav(nav)
+
+    post = Post(title="Animals", content="animal introduction")
+    post.addImage("animal_x.jpg")
+
+    page.addPost(post)
+    for i in range(4):
+        p = Post(title="", content="animal introduction")
+        p.addImage("animal_x.jpg")
+        page.addPost(p)
+    post = Post(title="", content=open("animals.txt").read())
     page.addPost(post)
     page.render("index.tpl", "index.html")
 
@@ -106,14 +113,13 @@ if __name__ == "__main__":
     page2 = Page(title='Wild world', subtitle='Mammals of Tasmania', student=student)
     page2.addNav(nav)
     introPost = Post(title="Introduce", content=open("intro.txt").read())
-    introPost.addImage("intro.jpg")
     page2.addPost(introPost)
     page2.render("index.tpl", "intro.html")
 
    # audience
     page3 = Page(title='Wild world', subtitle='Mammals of Tasmania', student=student)
     page3.addNav(nav)
-    audPost = Post(title="Audience", content="This site is for grade 7 student in Australia to provide information about mammals of Tasmania")
+    audPost = Post(title="Audience", content=open("aud.txt").read())
     page3.addPost(audPost)
     page3.render("index.tpl", "aud.html")
 
@@ -124,9 +130,10 @@ if __name__ == "__main__":
     page4.addPost(designPost)
     page4.render("index.tpl", "design.html")
 
-     # resource page
+    # resource page
     page5 = Page(title='Wild world', subtitle='Mammals of Tasmania', student=student)
     page5.addNav(nav)
     p = Post(title="Resources", content=open("resource.txt").read())
     page5.addPost(p)
     page5.render("index.tpl", "resources.html")
+
