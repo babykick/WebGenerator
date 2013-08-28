@@ -6,20 +6,22 @@
  
 <%block name="navlist">
    <ul>
-        <li class="page_item"><a href="index.html">Home</a></li>
-        <li class="page_item page-item-text"><a href="mailto:${student.email}" title="email">Jing Tao</a></li>
+      % for link in links:
+        <li class="page_item"><a href="${link[1]}">${link[0]}</a></li>
+      % endfor
   </ul>
 
 </%block> 
  
 <%block name="content">
+  % for post in posts:
   <div class="post">
       <h2><a href="#"> ${post.title}</a><br></h2>
       <p> 
            <img src="${imgdir}/computerchild.jpg" />
            ${post.content}
       </p>
-               
+  % endfor
   </div>  
  
 

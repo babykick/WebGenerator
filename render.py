@@ -8,11 +8,51 @@ myLookup = TemplateLookup(directories=['.'])
 OUTDIR = './pages/html/'
 
 
+class Page(object):
+    def __init__(self, title, subtitle, student=None, **kwargs):
+        self.posts = []
+        self.title = title
+        self.subtitle = subtitle
+        self.student = student
+        self.nav = None
+
+    def addNav(self, nav):
+        if self.nav is None:
+           self.nav = nav
+
+    def addPost(self, post):
+        self.posts.append(post)
+
+    def render(self, template, pageName):
+        ctx = {
+               'student': self.student,
+               'posts': self.posts,
+               'links': self.nav.links,
+               'baner_text': self.title,
+               'baner_text_sub': self.subtitle,
+               'imgdir': '../images'
+              }
+
+        makePage(template, pageName, **ctx)
+
+
+
 class Post(object):
     def __init__(self, title, content):
         self.title = title
         self.content = content
         
+class NavBar(object):
+    def __init__(self):
+        self.links = []
+
+    def addLink(self, **links):
+        """
+           link: A tuple include name and link url
+        """
+        for link in links.items():
+            self.links.append(link)
+
 
 class Student(object):
     def __init__(self, name, id, email, course):
@@ -34,20 +74,12 @@ def makePage(template, outfile, **context):
     
 
 if __name__ == "__main__":
-    articleContent = open("content.essay.txt").read()
-    post = Post(title="Computers and Children", content=articleContent)    
-    student = Student(name="Jing Tao", id="123456", email="taojing0814@126.com", course="SC/NATS1700B-computer,information and society")
-    ctx = {
-            'student': student,
-            'post': post,
-            'baner_text': 'Computer Life',
-            'baner_text_sub': 'A view about computer',
-    }
-    
-    env = {
-        'imgdir': '../images'
-    }
-    
-    ctx.update(env)
-    makePage("index.tpl", "index.html", **ctx)
-    
+    student = Student(name="Name", id="Student ID", email="xxxx@xx.com", course="SC/NATS1700B-computer,information and society")
+    page = Page(title='Wild world', subtitle='Mammals of Tasmania', student=student)
+    nav = NavBar()
+    nav.addLink(Home="index.html", Other="other.html")
+    articleContent = open("animals.txt").read()
+    post = Post(title="Animals", content=articleContent)
+    page.addNav(nav)
+    page.addPost(post)
+    page.render("index.tpl", "index.html")
