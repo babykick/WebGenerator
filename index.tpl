@@ -17,8 +17,10 @@
   % for post in posts:
   <div class="post">
       <h2><a href="#"> ${post.title}</a><br></h2>
-      <p> 
-           <img src="${imgdir}/computerchild.jpg" />
+      <p>
+           % for image in post.images:
+               <img src="${imgdir}/${image}" />
+           % endfor
            ${post.content}
       </p>
   % endfor

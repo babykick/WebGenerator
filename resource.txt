@@ -1,0 +1,4 @@
+<ul>
+<li>resource1</li>
+<li>resource2</li>
+</ul>
