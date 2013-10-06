@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title> 
-   <%block name="title" />
-</title>
-<link rel="stylesheet" href="main.css" type="text/css" media="screen" />
-  
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+   <title> 
+      <%block name="title" />
+   </title>
+   
+   <%block name="css" />
+    
+   <script>
+      <%block name="script" />
+   </script>
 </head>
 
 <body>
@@ -17,11 +21,11 @@
   <br>
    
   <span class="baner_text"> 
-      ${baner_text}
+      ${page.title}
   </span>
   
   <span class="baner_text_sub">  
-      ${baner_text_sub}
+      ${page.subtitle}
   </span>
     
     
@@ -49,9 +53,9 @@
     </div>  <!--end of sidebar-wrapper-->
    
   </div>  <!-- wrapper-->
+  
   <div id="footer">
-    <p> Powered by ${student.name} </p>
-
+     <%block name="footer" />
    </div>
   
 </div> <!-- wrapper2-->

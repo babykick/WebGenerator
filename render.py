@@ -3,9 +3,11 @@ from mako.runtime import Context
 from StringIO import StringIO
 from mako.lookup import TemplateLookup
 import os
+import copy
 
 myLookup = TemplateLookup(directories=['.'])
 OUTDIR = './pages/html/'
+MATDIR = './materials/'
 
 
 class Page(object):
@@ -13,14 +15,14 @@ class Page(object):
         self.posts = []
         self.title = title
         self.subtitle = subtitle
-        self.student = student
+        self.designer = student
         self.nav = None
         self.cssFiles = []
+        self.jsFiles = []
 
     def addNav(self, nav):
         if self.nav is None:
            self.nav = nav
-
 
     def addPost(self, post):
         self.posts.append(post)
@@ -28,19 +30,16 @@ class Page(object):
     def addCSS(self, cssFile):
         self.cssFiles.append(cssFile)
 
+    def addJS(self, jsFile):
+        self.jsFiles.append(jsFile)
+
     def render(self, template, pageName):
         ctx = {
-               'student': self.student,
-               'posts': self.posts,
-               'links': self.nav.links,
-               'baner_text': self.title,
-               'baner_text_sub': self.subtitle,
+               'page': self,
                'imgdir': '../images',
-               'cssFiles': self.cssFiles
               }
 
         makePage(template, pageName, **ctx)
-
 
 
 class Post(object):
@@ -51,6 +50,7 @@ class Post(object):
 
     def addImage(self, imgName):
         self.images.append(imgName)
+
 
 class NavBar(object):
     def __init__(self):
@@ -82,6 +82,11 @@ def makePage(template, outfile, **context):
     open(outfile, 'w').write(buf.getvalue())
 
 
+def readContent(subdir, contentFile):
+    return open(os.path.join(MATDIR, subdir, contentFile)).read()
+
+
+
 if __name__ == "__main__":
     nav = NavBar()
     nav.addLink(Home="index.html")
@@ -90,13 +95,15 @@ if __name__ == "__main__":
     nav.addLink(Design="design.html")
     nav.addLink(Resources="resources.html")
 
-    student = Student(name="Name", id="Student ID", email="xxxx@xx.com", course="SC/NATS1700B-computer,information and society")
+    student = Student(name="Lu Zhe Xuan", id="174047", email="xxxx@xx.com", course="KXX133 web management")
 
     # Home page
-    page = Page(title='Wild world', subtitle='Mammals of Tasmania', student=student)
-    page.addCSS("main_alter.css")
-    page.addNav(nav)
 
+    basePage = Page(title='Wild world', subtitle='Mammals of Tasmania', student=student)
+    basePage.addCSS('main.css')
+
+    page = copy.copy(basePage)
+    page.addNav(nav)
     post = Post(title="Animals", content="animal introduction")
     post.addImage("animal_x.jpg")
 
@@ -105,35 +112,36 @@ if __name__ == "__main__":
         p = Post(title="", content="animal introduction")
         p.addImage("animal_x.jpg")
         page.addPost(p)
-    post = Post(title="", content=open("animals.txt").read())
+    post = Post(title="", content=readContent("kxx-ass2", "animals.txt"))
     page.addPost(post)
-    page.render("index.tpl", "index.html")
+    page.render("base.mako", "index.html")
 
     # Intro page
-    page2 = Page(title='Wild world', subtitle='Mammals of Tasmania', student=student)
+    page2 = copy.copy(basePage)  #Page(title='Wild world', subtitle='Mammals of Tasmania', student=student)
     page2.addNav(nav)
-    introPost = Post(title="Introduce", content=open("intro.txt").read())
+    page2.addCSS('main.css')
+    introPost = Post(title="Introduce", content=readContent("kxx-ass2", "intro.txt"))
     page2.addPost(introPost)
-    page2.render("index.tpl", "intro.html")
+    page2.render("base.mako", "intro.html")
 
    # audience
     page3 = Page(title='Wild world', subtitle='Mammals of Tasmania', student=student)
     page3.addNav(nav)
-    audPost = Post(title="Audience", content=open("aud.txt").read())
+    audPost = Post(title="Audience", content=readContent("kxx-ass2", "aud.txt"))
     page3.addPost(audPost)
-    page3.render("index.tpl", "aud.html")
+    page3.render("base.mako", "aud.html")
 
     # design page
     page4 = Page(title='Wild world', subtitle='Mammals of Tasmania', student=student)
     page4.addNav(nav)
-    designPost = Post(title="Design", content=open("design.txt").read())
+    designPost = Post(title="Design", content=readContent("kxx-ass2", "design.txt"))
     page4.addPost(designPost)
-    page4.render("index.tpl", "design.html")
+    page4.render("base.mako", "design.html")
 
     # resource page
     page5 = Page(title='Wild world', subtitle='Mammals of Tasmania', student=student)
     page5.addNav(nav)
-    p = Post(title="Resources", content=open("resource.txt").read())
+    p = Post(title="Resources", content=readContent("kxx-ass2", "resource.txt"))
     page5.addPost(p)
-    page5.render("index.tpl", "resources.html")
+    page5.render("base.mako", "resources.html")
 
