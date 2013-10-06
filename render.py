@@ -85,7 +85,7 @@ class Student(object):
         self.course = course
         self.email = email
 
-
+# Utils
 def readContent(subdir, contentFile):
     return open(os.path.join(MATDIR, subdir, contentFile)).read()
 
