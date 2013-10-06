@@ -12,8 +12,8 @@ function seeAnswer(){
     ind = document.getElementById("animal_index").value;
     alert(ind);
     //alert(document.images['animal_x.jpg']);
-    document.images['animal_x_' + ind + '.jpg'].src = "../images/coffee.jpg";//"../images/animal_" + ind + '.jpg';
-
+    document.images['animal_x_' + ind + '.jpg'].src = "../images/animal_" + ind + '.jpg';
+    window.location.hash='animal_x_' + ind + '.jpg';
     return false;
 }
 
