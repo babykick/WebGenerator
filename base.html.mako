@@ -44,7 +44,7 @@
    
     <div id="sidebar-wrapper">
         <div id="sidebar">
-            <img src="${imgdir}/coffee.jpg" width=180 />
+            <img src="${imgdir}/coffee.jpg" width=180px />
            <%block name="sidebarinfo" />
         
         </div> <!--end of sidebar-->

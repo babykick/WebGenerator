@@ -8,13 +8,12 @@ function showEmail(){
   }
 }
 
-function changeQuantity(delta){
-    oFormObject = document.forms['checkout_form'];
-    oFormElement = oFormObject.elements["quantity"];
-    quantity = parseInt(oFormElement.value);
-    quantity += delta;
-    if(quantity<0) quantity=0;
-    oFormElement.value = quantity;
+function seeAnswer(){
+    ind = document.getElementById("animal_index").value;
+    alert(document.images['animal_x.jpg']);
+    document.images['animal_x.jpg'].src = "../images/animal_" + ind + '.jpg';
+    alert("here");
+    return false;
 }
 
 function checkRegisterForm() {
