@@ -12,7 +12,7 @@
  
  <%block name="script">
      % for js in page.jsFiles:
-        <script type="text/javascript" src="js/${js}"></script>
+        <script type="text/javascript" src="${js}"></script>
      % endfor
  </%block>
  

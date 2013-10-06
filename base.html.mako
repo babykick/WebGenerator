@@ -7,10 +7,9 @@
    </title>
    
    <%block name="css" />
-    
-   <script>
-      <%block name="script" />
-   </script>
+
+   <%block name="script" />
+
 </head>
 
 <body>

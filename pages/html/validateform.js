@@ -1,3 +1,5 @@
+//window.onload = hideAllErrors();
+
 function checkCheckoutForm(){
     quantity = parseInt(document.getElementById("quantity").value);
     return quantity > 0;
@@ -13,13 +15,17 @@ function changeQuantity(delta){
 }
 
 function checkRegisterForm() {
+  alert("3");
 	first_name = document.getElementById("firstname").value;
+
 	last_name = document.getElementById("lastname").value;
+
 	email = document.getElementById("email").value;
 	passwd = document.getElementById("passwd").value;
 	passwd2 = document.getElementById("passwd2").value;
-	
+
 	if (!checkEmail(email)) {
+        hideAllErrors();
 		document.getElementById("emailError").style.display = "inline";
 		document.getElementById("email").select();
 		document.getElementById("email").focus();
@@ -42,7 +48,7 @@ function checkRegisterForm() {
 		document.getElementById("email").select();
 		document.getElementById("email").focus();
 		return false;
-	} else if (passwd=="" || passwd2=="" || passwd != passwd2 ||
+	} else if (passwd =="" || passwd2=="" || passwd != passwd2 ||
 	           passwd.length <6 || passwd.length >16 ) {
 		hideAllErrors();
 		document.getElementById("pwdError").style.display = "inline";
@@ -50,29 +56,26 @@ function checkRegisterForm() {
 		document.getElementById("passwd").focus();
 		return false;
 	} 
-	 
+
 	return true;
 }
 
-function checkAddressForm(){
-    addrline1 = document.getElementById("addrline1").value;
-    addrline2 = document.getElementById("addrline2").value;
-    city =  addrline2 = document.getElementById("city").value;
-    if (addrline1 == "")  {
-	 //hideAllErrors();
-	 // document.getElementById("addrlineError").style.display = "inline";
-	 document.getElementById("addrline1").select();
-	 document.getElementById("addrline1").focus();
-	 alert("Please fill the address line 1");
-	 return false;
-     }else if(city == ""){
-	 //hideAllErrors();
-	// document.getElementById("cityError").style.display = "inline";
-	 document.getElementById("city").select();
-	 document.getElementById("city").focus();
-	 alert("Please fill the city");
-	 return false;
+function checkMessageForm(){
+    email = document.getElementById("visitor_email").value;
+    message = document.getElementById("message").value;
+
+    if (!checkEmail(email)){
+         document.getElementById("visitor_email").select();
+         document.getElementById("visitor_email").focus();
+         alert("Please fill the email in correct format");
+         return false;
+     }else if(message == ""){
+         document.getElementById("message").select();
+         document.getElementById("message").focus();
+         alert("Please fill the message");
+         return false;
      }
+    return true;
 }
 
 function hideAllErrors() { 
@@ -80,10 +83,16 @@ function hideAllErrors() {
 	document.getElementById("nameError2").style.display = "none";
 	document.getElementById("emailError").style.display = "none";
 	document.getElementById("pwdError").style.display = "none";
-	//document.getElementById("addrlineError").style.display = "none";
-	//document.getElementById("cityError").style.display = "none";
- 
+	document.getElementById("ageError").style.display = "none";
+
 }
+
+
+function hideAllErrors2() {
+	document.getElementById("email").style.display = "none";
+	document.getElementById("message").style.display = "none";
+}
+
 
 function checkEmail(inputvalue){	
 	var pattern = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;

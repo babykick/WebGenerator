@@ -1,0 +1,31 @@
+<div ><p><b>Register Now!</b></p></div></br>
+<form method="post" action="#" onsubmit="return checkRegisterForm();">
+     <div style=" margin-left: 70px" >
+        <div>Email: <input type="text" name='email' id="email"/>*</div><p></p>
+		<span class='error' id="emailError">Required: Please enter your email address<br /></span>
+
+		<div>First Name: <input type="text" name="firstname" id="firstname" />*</div>
+		<div class='error' id="nameError">Required: Please enter your first name<br /></div>
+        
+        <div>Last Name: <input type="text" name="lastname" id="lastname" />*</div>
+		<div class='error' id="nameError2">Required: Please enter your last name<br /></div>
+        
+		<div>Password: <input type="password" name="passwd" id="passwd"/>*</div>
+        <div class='error' id="pwdError">Required: Please check your two passwords(6-15 chars and equals)<br /></div>
+		
+        <div>Confirm Password: <input type="password" name="passwd2" id="passwd2"/>*</div>
+        
+        <div>Sex: <input type="radio" name="sex" id="sex" value="male" /> Male &nbsp;&nbsp;
+		<input type="radio" name="sex" value="female" /> Female</div>
+        
+        <div>Age: <input type="text" name="age" id="age" />*</div> 
+		<div class='error' id="ageError">Required: Please enter your age<br /></div>
+        
+        <div>Address: <input type="text" name="address" id="address"/></div>
+        <div>City Name: <input type="text" name="city" id="city" /></div>
+        
+
+        
+      </div>
+	   <div style="margin-left:160px;"><input type='submit' value='Sign up' /></div> 
+</form>

@@ -1,2 +1,8 @@
-Resources list and explanation
+<form method="post" action="#" onsubmit="return checkMessageForm();">
+     <div style=" margin-left: 70px">
+        <div>Email: <input type="text" name='visitor_email' id="visitor_email" /></div><br>
+        <div> Message:<br> <textarea rows="4" cols="50" name="message" id="message" ></textarea> </div>
+	    <div style="margin-left:160px;"><input type='submit' value='Submit' /></div>
+	 </div>
+</form>
 <br><a href="index.html">Back to home<a>

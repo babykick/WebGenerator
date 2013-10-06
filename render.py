@@ -119,13 +119,13 @@ if __name__ == "__main__":
         page.addPost(p)
     post = Post(title="", content=readContent("kxx-ass2", "animals.txt"))
     page.addPost(post)
-    page.render("index.html")
+    page.render("intro.html")
 
     # Intro page
     page2 = basePage.duplicated()
-    introPost = Post(title="Introduce", content=readContent("kxx-ass2", "intro.txt"))
+    introPost = Post(title="Welcome to the animals world", content=readContent("kxx-ass2",  "flow_pictures.txt"))
     page2.addPost(introPost)
-    page2.render("intro.html")
+    page2.render("index.html")
 
 
    # audience
@@ -149,6 +149,6 @@ if __name__ == "__main__":
 
    # Register page
     page6 = basePage.duplicated()
-    introPost = Post(title="Register", content=readContent("kxx-ass2", "register.txt"))
-    page6.addPost(introPost)
+    p = Post(title="Register", content=readContent("kxx-ass2", "register.txt"))
+    page6.addPost(p)
     page6.render("register.html")
