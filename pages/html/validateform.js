@@ -1,8 +1,11 @@
 //window.onload = hideAllErrors();
 
-function checkCheckoutForm(){
-    quantity = parseInt(document.getElementById("quantity").value);
-    return quantity > 0;
+function showEmail(){
+  if( document.getElementById("contact").checked){
+       document.getElementById("hidden_email").style.display = "inline";
+  }else{
+      document.getElementById("hidden_email").style.display = "none";
+  }
 }
 
 function changeQuantity(delta){

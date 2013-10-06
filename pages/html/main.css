@@ -3,7 +3,11 @@
    margin-left: 50px;
    display: none;
 }
-	
+.hidden{
+
+ display: none;
+
+}
 
 .center p{
    font-family:verdana;font-size:20px;color:#1174AE;
