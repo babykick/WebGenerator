@@ -9,7 +9,7 @@ import copy
 myLookup = TemplateLookup(directories=['.'])
 OUTDIR = './pages/html/'
 MATDIR = './materials/'
-VALIDATE_JS = 'validateform.js'
+MAIN_JS = 'main.js'
 
 class Page(object):
     def __init__(self, tpl, title, subtitle, student=None, **kwargs):
@@ -105,7 +105,7 @@ if __name__ == "__main__":
     # Base page
     basePage = Page(tpl="base.mako", title='Wild world', subtitle='Mammals of Tasmania', student=student)
     basePage.addCSS('main.css')
-    basePage.addJS(VALIDATE_JS)
+    basePage.addJS(MAIN_JS)
     basePage.addNav(nav)
 
     # Home page
