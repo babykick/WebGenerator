@@ -1,0 +1,2 @@
+You may choose five (5) different mammals and provide relevant information about each<br>
+<br> <a href="index.html">Back to home<a>

@@ -9,7 +9,7 @@ import copy
 myLookup = TemplateLookup(directories=['.'])
 OUTDIR = './pages/html/'
 MATDIR = './materials/'
-
+VALIDATE_JS = 'validateform.js'
 
 class Page(object):
     def __init__(self, tpl, title, subtitle, student=None, **kwargs):
@@ -98,13 +98,14 @@ if __name__ == "__main__":
     nav.addLink(Audience="aud.html")
     nav.addLink(Design="design.html")
     nav.addLink(Resources="resources.html")
+    nav.addLink(Register="register.html")
 
-    student = Student(name="Lu Zhe Xuan", id="174047", email="xxxx@xx.com", course="KXX133 web management")
+    student = Student(name="Lu Zhe Xuan", id="174047", email="xxxx@xx.com", course="KXX133 web management ass2")
 
     # Base page
     basePage = Page(tpl="base.mako", title='Wild world', subtitle='Mammals of Tasmania', student=student)
     basePage.addCSS('main.css')
-    basePage.addJS('validate.js')
+    basePage.addJS(VALIDATE_JS)
     basePage.addNav(nav)
 
     # Home page
@@ -121,13 +122,14 @@ if __name__ == "__main__":
     page.render("index.html")
 
     # Intro page
-    page2 = basePage.duplicated()  #Page(title='Wild world', subtitle='Mammals of Tasmania', student=student)
+    page2 = basePage.duplicated()
     introPost = Post(title="Introduce", content=readContent("kxx-ass2", "intro.txt"))
     page2.addPost(introPost)
     page2.render("intro.html")
 
+
    # audience
-    page3 = basePage.duplicated() #Page(title='Wild world', subtitle='Mammals of Tasmania', student=student)
+    page3 = basePage.duplicated()
     audPost = Post(title="Audience", content=readContent("kxx-ass2", "aud.txt"))
     page3.addPost(audPost)
     page3.render("aud.html")
@@ -144,3 +146,9 @@ if __name__ == "__main__":
     page5.addPost(p)
     page5.render("resources.html")
 
+
+   # Register page
+    page6 = basePage.duplicated()
+    introPost = Post(title="Register", content=readContent("kxx-ass2", "register.txt"))
+    page6.addPost(introPost)
+    page6.render("register.html")
