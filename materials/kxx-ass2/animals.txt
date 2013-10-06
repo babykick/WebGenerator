@@ -1,10 +1,10 @@
 <div>
-    <form action="#" onsubmit="seeAnswer()">
+    <form action="#" onsubmit="seeAnswer();return false;">
     Select which to show:
-    <select>
-          <option id="animal_index" value ="1">1</option>
-          <option id="animal_index" value ="2">2</option>
-          <option id="animal_index" value="3">3</option>
+    <select id="animal_index">
+          <option  value ="1">1</option>
+          <option  value ="2">2</option>
+          <option  value="3">3</option>
     </select>
     <input type='submit' value='See' />
     </form>

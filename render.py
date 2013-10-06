@@ -114,14 +114,14 @@ if __name__ == "__main__":
     page.addPost(post)
 
     post = Post(title="Animals", content="animal introduction")
-    post.addImage("animal_x.jpg", width=60)
+    post.addImage("animal_x_1.jpg", width=60)
     page.addPost(post)
-    page.render("intro.html")
+
     for i in range(2,4,1):
         p = Post(title="", content="animal introduction")
-        p.addImage("animal_x.jpg", width=60)
+        p.addImage("animal_x_%s.jpg" % i, width=60)
         page.addPost(p)
-
+    page.render("intro.html")
 
     # Intro page
     page2 = basePage.duplicated()
