@@ -62,8 +62,8 @@ class Post(object):
         self.content = content
         self.images = []
 
-    def addImage(self, imgName):
-        self.images.append(imgName)
+    def addImage(self, imgName, width):
+        self.images.append({'name':imgName, 'width':width})
 
 
 class NavBar(object):
@@ -110,16 +110,18 @@ if __name__ == "__main__":
 
     # Home page
     page = basePage.duplicated()
-    post = Post(title="Animals", content="animal introduction")
-    post.addImage("animal_x.jpg")
-    page.addPost(post)
-    for i in range(4):
-        p = Post(title="", content="animal introduction")
-        p.addImage("animal_x.jpg")
-        page.addPost(p)
     post = Post(title="", content=readContent("kxx-ass2", "animals.txt"))
     page.addPost(post)
+
+    post = Post(title="Animals", content="animal introduction")
+    post.addImage("animal_1.jpg", width=60)
+    page.addPost(post)
     page.render("intro.html")
+    for i in range(2,4,1):
+        p = Post(title="", content="animal introduction")
+        p.addImage("animal_%s.jpg" % i)
+        page.addPost(p)
+
 
     # Intro page
     page2 = basePage.duplicated()

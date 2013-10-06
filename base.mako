@@ -31,7 +31,7 @@
       <h2><a href="#"> ${post.title}</a><br></h2>
       <p>
            % for image in post.images:
-               <img src="${imgdir}/${image}" />
+               <img src="${imgdir}/${image['name']} alt=${image['name']} width=${image['width']}px />
            % endfor
            ${post.content}
       </p>

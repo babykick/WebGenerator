@@ -1,2 +1,11 @@
-You may choose five (5) different mammals and provide relevant information about each<br>
-<br> <a href="index.html">Back to home<a>
+<div>
+    <form action="#" onsubmit="seeAnswer()">
+    Select which to show:
+    <select>
+          <option name="animal_index" value ="1">1</option>
+          <option name="animal_index" value ="2">2</option>
+          <option name="animal_index" value="3">3</option>
+    </select>
+    <input type='submit' value='See' />
+    </form>
+</div>

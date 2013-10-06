@@ -18,9 +18,7 @@ function changeQuantity(delta){
 }
 
 function checkRegisterForm() {
-  alert("3");
 	first_name = document.getElementById("firstname").value;
-
 	last_name = document.getElementById("lastname").value;
 
 	email = document.getElementById("email").value;
