@@ -5,13 +5,15 @@ from mako.lookup import TemplateLookup
 import os
 import copy
 
+
 myLookup = TemplateLookup(directories=['.'])
 OUTDIR = './pages/html/'
 MATDIR = './materials/'
 
 
 class Page(object):
-    def __init__(self, title, subtitle, student=None, **kwargs):
+    def __init__(self, tpl, title, subtitle, student=None, **kwargs):
+        self.tpl = tpl
         self.posts = []
         self.title = title
         self.subtitle = subtitle
@@ -33,13 +35,25 @@ class Page(object):
     def addJS(self, jsFile):
         self.jsFiles.append(jsFile)
 
-    def render(self, template, pageName):
+    def _makePage(self, template, outfile, **context):
+        myTemplate = Template(filename=template, lookup=myLookup)
+        buf = StringIO()
+        ctx = Context(buf, **context)
+        myTemplate.render_context(ctx)
+        print buf.getvalue()
+        outfile = os.path.join(OUTDIR, outfile)
+        open(outfile, 'w').write(buf.getvalue())
+
+    def render(self, pageName):
         ctx = {
                'page': self,
                'imgdir': '../images',
               }
 
-        makePage(template, pageName, **ctx)
+        self._makePage(self.tpl, pageName, **ctx)
+
+    def duplicated(self):
+        return copy.deepcopy(self)
 
 
 class Post(object):
@@ -72,16 +86,6 @@ class Student(object):
         self.email = email
 
 
-def makePage(template, outfile, **context):
-    myTemplate = Template(filename=template, lookup=myLookup)
-    buf = StringIO()
-    ctx = Context(buf, **context)
-    myTemplate.render_context(ctx)
-    print buf.getvalue()
-    outfile = os.path.join(OUTDIR, outfile)
-    open(outfile, 'w').write(buf.getvalue())
-
-
 def readContent(subdir, contentFile):
     return open(os.path.join(MATDIR, subdir, contentFile)).read()
 
@@ -97,16 +101,16 @@ if __name__ == "__main__":
 
     student = Student(name="Lu Zhe Xuan", id="174047", email="xxxx@xx.com", course="KXX133 web management")
 
-    # Home page
-
-    basePage = Page(title='Wild world', subtitle='Mammals of Tasmania', student=student)
+    # Base page
+    basePage = Page(tpl="base.mako", title='Wild world', subtitle='Mammals of Tasmania', student=student)
     basePage.addCSS('main.css')
+    basePage.addJS('validate.js')
+    basePage.addNav(nav)
 
-    page = copy.copy(basePage)
-    page.addNav(nav)
+    # Home page
+    page = basePage.duplicated()
     post = Post(title="Animals", content="animal introduction")
     post.addImage("animal_x.jpg")
-
     page.addPost(post)
     for i in range(4):
         p = Post(title="", content="animal introduction")
@@ -114,34 +118,29 @@ if __name__ == "__main__":
         page.addPost(p)
     post = Post(title="", content=readContent("kxx-ass2", "animals.txt"))
     page.addPost(post)
-    page.render("base.mako", "index.html")
+    page.render("index.html")
 
     # Intro page
-    page2 = copy.copy(basePage)  #Page(title='Wild world', subtitle='Mammals of Tasmania', student=student)
-    page2.addNav(nav)
-    page2.addCSS('main.css')
+    page2 = basePage.duplicated()  #Page(title='Wild world', subtitle='Mammals of Tasmania', student=student)
     introPost = Post(title="Introduce", content=readContent("kxx-ass2", "intro.txt"))
     page2.addPost(introPost)
-    page2.render("base.mako", "intro.html")
+    page2.render("intro.html")
 
    # audience
-    page3 = Page(title='Wild world', subtitle='Mammals of Tasmania', student=student)
-    page3.addNav(nav)
+    page3 = basePage.duplicated() #Page(title='Wild world', subtitle='Mammals of Tasmania', student=student)
     audPost = Post(title="Audience", content=readContent("kxx-ass2", "aud.txt"))
     page3.addPost(audPost)
-    page3.render("base.mako", "aud.html")
+    page3.render("aud.html")
 
     # design page
-    page4 = Page(title='Wild world', subtitle='Mammals of Tasmania', student=student)
-    page4.addNav(nav)
+    page4 =  basePage.duplicated()
     designPost = Post(title="Design", content=readContent("kxx-ass2", "design.txt"))
     page4.addPost(designPost)
-    page4.render("base.mako", "design.html")
+    page4.render( "design.html")
 
     # resource page
-    page5 = Page(title='Wild world', subtitle='Mammals of Tasmania', student=student)
-    page5.addNav(nav)
+    page5 = basePage.duplicated()
     p = Post(title="Resources", content=readContent("kxx-ass2", "resource.txt"))
     page5.addPost(p)
-    page5.render("base.mako", "resources.html")
+    page5.render("resources.html")
 
