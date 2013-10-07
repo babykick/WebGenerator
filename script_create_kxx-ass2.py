@@ -1,4 +1,6 @@
 from render import *
+
+
 if __name__ == "__main__":
     nav = NavBar()
     nav.addLink(Home="index.html")

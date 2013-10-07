@@ -1,5 +1,6 @@
+/* Validation and image show functions */
 
-
+/* Show Email field of the form */
 function showEmail(){
   if( document.getElementById("contact").checked){
        document.getElementById("hidden_email").style.display = "inline";
@@ -8,6 +9,7 @@ function showEmail(){
   }
 }
 
+/* Reveal the anwser image */
 function seeAnswer(){
     ind = document.getElementById("animal_index").value;
     document.images['animal_x_' + ind + '.jpg'].src = "../images/animal_" + ind + '.jpg';
@@ -15,6 +17,7 @@ function seeAnswer(){
     return false;
 }
 
+/* check the register form */
 function checkRegisterForm() {
 	first_name = document.getElementById("firstname").value;
 	last_name = document.getElementById("lastname").value;
@@ -59,6 +62,7 @@ function checkRegisterForm() {
 	return true;
 }
 
+/* check the message form */
 function checkMessageForm(){
     email = document.getElementById("visitor_email").value;
     message = document.getElementById("message").value;
@@ -77,6 +81,7 @@ function checkMessageForm(){
     return true;
 }
 
+/* Hide all errors at startup */
 function hideAllErrors() { 
 	document.getElementById("nameError").style.display = "none";
 	document.getElementById("nameError2").style.display = "none";
