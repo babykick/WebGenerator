@@ -108,28 +108,26 @@ if __name__ == "__main__":
     basePage.addJS(MAIN_JS)
     basePage.addNav(nav)
 
-    # Home page
+    # Intro page
     page = basePage.duplicated()
     post = Post(title="", content=readContent("kxx-ass2", "animals.txt"))
     page.addPost(post)
-    intro='''
-       This animal has extremely strong front limbs and claws due to its mechanical advantage which allows it to burrow quickly with great power. As it needs to be able to survive underground it has a significant tolerance to high levels of carbon dioxide and low levels of oxygen. It has no weapons or fighting ability but repels predators by curling into a ball and deterring them with its spines. The animal lacks the ability to sweat and cannot deal with heat well so it tends to avoid daytime activity in hot weather. It can swim if needed. The snout has mechanical and electroreceptors that help the echidna to detect what is around it.
 
-    ''';
-    post = Post(title="Animals", content=intro)
-    post.addImage("animal_x_1.jpg", width=60)
+    post = Post(title="Animals", content="This animal has extremely strong front limbs and claws due to its mechanical advantage which allows it to burrow quickly with great power. As it needs to be able to survive underground it has a significant tolerance to high levels of carbon dioxide and low levels of oxygen. It has no weapons or fighting ability but repels predators by curling into a ball and deterring them with its spines. The animal lacks the ability to sweat and cannot deal with heat well so it tends to avoid daytime activity in hot weather. It can swim if needed. The snout has mechanical and electroreceptors that help the echidna to detect what is around it.")
+    post.addImage("animal_x_1.jpg", width=300)
     page.addPost(post)
     post = Post(title="Animals", content="This animal are sturdy and built close to the ground. When fully grown, they can reach between 80 and 130 cm, and weigh between 17 and 40 kg. The wombats found on Tasmania and Flinders Island are often smaller than their mainland counterparts. It is distinguished from both hairy-nosed wombats by its bald nose.")
-    post.addImage("animal_x_2.jpg", width=60)
+    post.addImage("animal_x_2.jpg", width=300)
     page.addPost(post)
     post = Post(title="Animals", content="This animal have large, powerful hind legs, large feet adapted for leaping, a long muscular tail for balance, and a small head. Like most marsupials, female have a pouch called a marsupium in which joeys complete postnatal development.")
-    post.addImage("animal_x_3.jpg", width=60)
+    post.addImage("animal_x_3.jpg", width=300)
     page.addPost(post)
 
     page.render("intro.html")
 
-    # Intro page
+    # Index page
     page2 = basePage.duplicated()
+    page2.addJS("slider.js")
     introPost = Post(title="Welcome to the animals world", content=readContent("kxx-ass2",  "flow_pictures.txt"))
     page2.addPost(introPost)
     page2.render("index.html")

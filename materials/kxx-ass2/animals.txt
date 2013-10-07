@@ -1,6 +1,6 @@
 <div>
     <form action="#" onsubmit="seeAnswer();return false;">
-    Select which to show:
+    Guess first, then select number to show:
     <select id="animal_index">
           <option  value ="1">1</option>
           <option  value ="2">2</option>

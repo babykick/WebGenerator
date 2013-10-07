@@ -1,0 +1,5 @@
+<div >
+   <img src="../images/animal_1.jpg" id="myPicture" width="350"   alt="Slides show" />
+   <h2> <a href="previous.html" id="prevLink">&lt;&lt; Previous</a>&nbsp; &nbsp;
+        <a href="next.html" id="nextLink"> Next&gt;&gt;</a></h2>
+</div>

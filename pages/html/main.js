@@ -1,4 +1,4 @@
-//window.onload = hideAllErrors();
+
 
 function showEmail(){
   if( document.getElementById("contact").checked){
@@ -10,8 +10,6 @@ function showEmail(){
 
 function seeAnswer(){
     ind = document.getElementById("animal_index").value;
-    alert(ind);
-    //alert(document.images['animal_x.jpg']);
     document.images['animal_x_' + ind + '.jpg'].src = "../images/animal_" + ind + '.jpg';
     window.location.hash='animal_x_' + ind + '.jpg';
     return false;
@@ -86,12 +84,6 @@ function hideAllErrors() {
 	document.getElementById("pwdError").style.display = "none";
 	document.getElementById("ageError").style.display = "none";
 
-}
-
-
-function hideAllErrors2() {
-	document.getElementById("email").style.display = "none";
-	document.getElementById("message").style.display = "none";
 }
 
 
