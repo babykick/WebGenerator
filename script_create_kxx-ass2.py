@@ -52,6 +52,7 @@ if __name__ == "__main__":
     # design page
     page4 =  basePage.duplicated()
     designPost = Post(title="Design", content=readContent("kxx-ass2", "design.txt"))
+    designPost.addImage("skeleton.jpg",width="600")
     page4.addPost(designPost)
     page4.render( "design.html")
 
